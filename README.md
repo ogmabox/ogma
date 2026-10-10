@@ -43,17 +43,6 @@ No account. No subscription. No cloud. Everything runs on your machine and your 
 
 **[Get the latest release](https://github.com/ogmabox/ogma/releases/latest)**
 
-Source and CI builds live in the private `ogmabox/ogma-app` repository. Public
-downloads, issues, and desktop update checks use `ogmabox/ogma`.
-
-For a manual release, download every platform's assets from the private draft
-release into one directory named `release-assets`, then run
-`node scripts/prepare-updater-metadata.cjs release-assets` and
-`node scripts/verify-updater-metadata.cjs release-assets`.
-Upload all files in that directory to the same version tag in `ogmabox/ogma`,
-including the generated `latest*.yml` files, ZIPs, installers, and blockmaps.
-Publish only after all platforms are present. The public repository must be public
-for users to download releases and check for updates without GitHub credentials.
 
 | Platform | Package |
 |----------|---------|
