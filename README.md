@@ -112,8 +112,6 @@ ogma pentest https://target.example.com --min-severity high --output report.md
 
 Rust backend - Vue frontend - Electron desktop - SQLite storage
 
-No performance compromise: the backend is a compiled Rust binary. The frontend is a pre-built static bundle. Startup is under 200ms.
-
 ---
 
 ## Contributing
@@ -136,8 +134,4 @@ Code contributions will open with the v1.0 release.
 
 **[X / Twitter](https://x.com/kaijinlab)** - releases and updates
 
----
 
-## License
-
-Ogma is licensed under the [GNU Affero General Public License v3.0](LICENSE).
