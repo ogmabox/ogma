@@ -1,137 +1,56 @@
-<p align="center">
-  <a href="https://github.com/ogmabox/ogma">
-    <img width="1916" height="821" alt="Ogma banner" src="https://github.com/user-attachments/assets/f7f6def5-3b4b-4bc7-8c67-5b7eca09cdf4" />
-  </a>
-</p>
-
-<div align="center">
-
 # Ogma
 
-### A lightweight local proxy for web security testing.
+Ogma is an intercepting proxy for testing web applications and APIs. Capture traffic, change a request, send it again, and keep your notes and findings with the project.
 
-<br/>
+It runs on Windows, macOS, and Linux, with a Rust backend, Vue interface, and Electron desktop app.
 
-[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-e8a44a?style=for-the-badge)](LICENSE)
-[![GitHub Releases](https://img.shields.io/github/v/release/ogmabox/ogma?style=for-the-badge&color=e8a44a)](https://github.com/ogmabox/ogma/releases/latest)
-[![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-555555?style=for-the-badge)]()
+**[Download Ogma](https://ogmabox.com/download)** · [Try it in your browser](https://ogmabox.com/) · [Documentation](https://docs.ogmabox.com/) · [Discord](https://discord.gg/QNSadmjh6y)
 
-<br/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/http-history-dark.png">
+  <img src="assets/http-history-light.png" alt="Ogma HTTP History with captured API requests and the selected request and JSON response displayed side by side" width="1280">
+</picture>
 
-<a href="https://discord.gg/QNSadmjh6y"><img src="https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
-<a href="https://x.com/kaijinlab"><img src="https://img.shields.io/badge/Follow-%40kaijinlab-000000?style=for-the-badge&logo=x&logoColor=white" alt="X / Twitter"></a>
+*HTTP History in the website demo, using sample traffic. [Try the interactive workspace](https://ogmabox.com/) before downloading.*
 
-</div>
+## Working with Ogma
 
----
+HTTP History is a starting point. Search the traffic with HTTPQL, send a request to Replay, and compare what happens when you change it. Related requests stay together in collections, and each attempt keeps its request and response.
 
-Intercept, replay, scan, automate, and extend HTTP workflows from one lightweight desktop app.
+There are tools for the rest of an assessment too:
 
-No account. No subscription. No cloud. Everything runs on your machine and your traffic stays there too.
+- Pause and edit HTTP or WebSocket messages in Intercept, or apply Match & Replace rules as traffic passes through.
+- Test payload lists with Automate, build request pipelines in Replay, and reuse processing steps through workflows.
+- Inspect MessagePack and SignalR messages, import API definitions, and use Sitemap and content discovery to explore a target.
+- Run passive and active checks, record findings with supporting traffic, and export reports.
+- Add JavaScript plugins with the [SDK](https://github.com/ogmabox/ogma-sdk), use the built-in AI assistant with your configured provider, or connect an agent through MCP.
 
-<br/>
+The [features page](https://ogmabox.com/features) has interactive examples. The [documentation](https://docs.ogmabox.com/) covers setup and the individual tools.
 
-<div align="center">
-  <a href="https://github.com/ogmabox/ogma/releases/latest">
-    <img width="1920" height="1017" alt="Ogma HTTP History" src="https://github.com/user-attachments/assets/5522a915-64a8-4958-a7cb-dce2bc113dbd" style="border-radius: 12px;" />
-  </a>
-</div>
+## Downloads
 
-<br/>
+Get the current version from the [download page](https://ogmabox.com/download) or [GitHub Releases](https://github.com/ogmabox/ogma/releases/latest).
 
-## Download
+| System | Architecture | Downloads |
+| --- | --- | --- |
+| Windows | x64, ARM64 | Installer or portable `.exe` |
+| macOS | Apple Silicon, Intel | `.dmg` or `.zip` |
+| Linux | x64 | `.AppImage` or `.deb` |
+| Linux | ARM64 | `.AppImage` |
 
-**[Get the latest release](https://github.com/ogmabox/ogma/releases/latest)**
+[Older releases](https://github.com/ogmabox/ogma/releases) and the [changelog](https://docs.ogmabox.com/changelog) are available if you need a previous version or want to see what changed.
 
+## First capture
 
-| Platform | Package |
-|----------|---------|
-| macOS (Apple Silicon + Intel) | `.dmg` |
-| Linux x64 / ARM64 | `.AppImage` or `.deb` |
-| Windows x64 / ARM64 | `.exe` installer |
+1. Install Ogma and open a project or temporary session.
+2. Start a proxy instance, then open its workspace.
+3. Open Ogma Browser, which is already configured to use the proxy, and browse your test application.
+4. Open **HTTP History** to inspect the requests and responses. Send a request to **Replay** when you want to work on it separately.
 
-No setup required beyond installing the app. Start the proxy, import the CA certificate for HTTPS, and you are capturing traffic.
+For an external browser, use the listener address shown in Ogma, normally `127.0.0.1:8080`. For HTTPS inspection, download the CA from **Settings > Certificate** and trust it in the browser profile used for testing. The [first-capture guide](https://docs.ogmabox.com/guide/first-capture) walks through both options.
 
----
+## About this repository
 
-## What Ogma does
+This repository hosts releases and tracks issues. It does not contain the desktop application's source code.
 
-**Capture and inspect**
-Every HTTP, HTTPS, WebSocket, and HTTP/2 request flows through Ogma's proxy. Filter, search, and tag traffic with HTTPQL - a purpose-built query language for HTTP history.
-
-**Intercept and modify**
-Pause any request before it leaves, edit it, then forward or drop it. Build Match & Replace rules to automatically rewrite headers, bodies, or paths in transit.
-
-**Replay and fuzz**
-Open any request in Replay and modify it freely. Scale up with Automate - Sniper, Pitchfork, and Cluster Bomb attack modes with payload extractors, matchers, and stop conditions. No rate limiting.
-
-**Scan for vulnerabilities**
-The passive scanner analyzes captured traffic continuously. The active scanner sends targeted payloads and only creates findings when the response contains evidence - SQL injection, XSS, SSRF, command injection, SSTI, path traversal, and open redirect.
-
-**Discover attack surface**
-Content discovery probes a target with a built-in 9,300-path wordlist, technology presets for WordPress, PHP, Java, .NET, and Node.js, and a live results table. Every discovered path feeds directly into HTTP History and Sitemap.
-
-**Track and report**
-The Findings panel links vulnerability evidence directly to the HTTP entries that prove it. Export reports as Markdown, JSON, or CSV. Import project archives to resume a session on any machine.
-
-**Extend and automate**
-Write plugins in JavaScript. Connect any AI assistant through the MCP server - 125+ tools covering history, findings, replay, workflows, and browser automation. Run headless pentests from the CLI: `ogma pentest <url>`.
-
----
-
-## Use cases
-
-- **Manual penetration testing** - intercept, analyze, and attack web applications with full control over every request
-- **Bug bounty** - triage targets fast with HTTPQL filters, scope presets, and AI-assisted analysis
-- **Security code review** - proxy your own app during development to catch issues before they ship
-- **CTF challenges** - decode, replay, fuzz, and automate without switching between a dozen tools
-
----
-
-## Quick start
-
-1. [Download](https://github.com/ogmabox/ogma/releases/latest) the installer for your platform
-2. Open Ogma and start the local instance
-3. Configure your browser proxy to `127.0.0.1:8080` - or use the built-in browser
-4. For HTTPS: import the Ogma CA certificate from **Settings > TLS**
-5. Browse your target - traffic appears in **HTTP History**
-
-### Headless mode
-
-```bash
-# Run an automated pentest and get a Markdown report
-ogma pentest https://target.example.com
-
-# Specify minimum severity and output file
-ogma pentest https://target.example.com --min-severity high --output report.md
-```
-
----
-
-## Built with
-
-Rust backend - Vue frontend - Electron desktop - SQLite storage
-
----
-
-## Contributing
-
-Ogma is currently in **public beta**. We are not accepting code contributions yet - the architecture and internal APIs are still being finalized.
-
-**What we accept right now:**
-
-- [Bug reports](https://github.com/ogmabox/ogma/issues/new?template=bug_report.md)
-- [Feature requests](https://github.com/ogmabox/ogma/issues/new?template=feature_request.md)
-- Feedback and discussion in [Discord](https://discord.gg/QNSadmjh6y)
-
-Code contributions will open with the v1.0 release.
-
----
-
-## Community
-
-**[Discord](https://discord.gg/QNSadmjh6y)** - bug reports, feedback, and general discussion
-
-**[X / Twitter](https://x.com/kaijinlab)** - releases and updates
-
-
+Found a bug? [Open an issue](https://github.com/ogmabox/ogma/issues/new) with your Ogma version, operating system, and steps to reproduce it. Feature requests are welcome there too. For questions or a less formal conversation, join [Discord](https://discord.gg/QNSadmjh6y).
